@@ -43,5 +43,4 @@ optional arguments:
   --colors COLORS [COLORS ...]
                         Provide colors. eq "--colors white black coral"
   --output_prefix OUTPUT_PREFIX
-
 ```

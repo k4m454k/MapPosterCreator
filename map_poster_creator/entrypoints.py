@@ -35,7 +35,7 @@ def add_poster_create_subparser(parent_parser) -> argparse.ArgumentParser:
     )
     poster_create_parser.add_argument(
         '--output_prefix',
-        help='',
+        help='Output file prefix. eq. "{OUTPUT_PREFIX}_{COLOR}.png". Default "map"',
         type=str,
         default="map"
     )
