@@ -1,6 +1,7 @@
 import argparse
 import logging
 
+from color_schemes import base_color_scheme
 from map_poster_creator.main import create_poster
 from map_poster_creator import __version__
 
@@ -28,14 +29,16 @@ def add_poster_create_subparser(parent_parser) -> argparse.ArgumentParser:
         required=True,
     )
     poster_create_parser.add_argument(
-        '--colors', help='Provide colors. '
-                         'eq "--colors white black coral"',
+        '--colors', help=f'Provide colors. '
+                         f'eq "--colors white black coral". '
+                         f'Default: "white". '
+                         f'Available colors: {", ".join(base_color_scheme.keys())}',
         default=["white"],
         nargs="+",
     )
     poster_create_parser.add_argument(
         '--output_prefix',
-        help='Output file prefix. eq. "{OUTPUT_PREFIX}_{COLOR}.png". Default "map"',
+        help='Output file prefix. eq. "{OUTPUT_PREFIX}_{COLOR}.png". Default: "map"',
         type=str,
         default="map"
     )

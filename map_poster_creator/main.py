@@ -68,7 +68,7 @@ def create_poster(
     for color in colors:
         if color not in base_color_scheme.keys():
             logger.warning(f"Color {color} not found in base color scheme. "
-                           f"Available colors {' '.join(base_color_scheme.keys())}")
+                           f"Available colors: {', '.join(base_color_scheme.keys())}")
         print("")
         print(f"Plot and Save {color} map")
         plot_and_save(

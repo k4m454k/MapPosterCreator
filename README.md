@@ -19,6 +19,17 @@
 
 `pip install map-poster-creator`
 
+### Deps
+
+#### Linux
+- `apt-get install libgeos-dev`
+
+#### Windows
+- MSVC v140
+- gdal
+
+#### MacOS
+- `brew install geos`
 
 ## Usage:
 
