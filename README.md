@@ -25,7 +25,7 @@
 - `apt-get install libgeos-dev`
 
 #### Windows [BIG TROUBLE, 14GB Dependencies]
-- OSGeo4W with Python3
+- Use Docker =)
 
 #### MacOS
 - `brew install geos`
