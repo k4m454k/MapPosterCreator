@@ -26,11 +26,14 @@
 2. Download shp archive for region https://download.geofabrik.de/ eq: `central-fed-district-latest-free.shp.zip`
 3. Unpack `*.free.shp.zip` archive to some folder `PATH_TO_SHP_DIR`
 
-```
-# mapoc poster create --shp_path PATH_TO_SHP_DIR --geojson PATH_TO_GEOJSON --colors white black coral
+```bash
+$ mapoc poster create --shp_path PATH_TO_SHP_DIR --geojson PATH_TO_GEOJSON --colors white black coral
 ```
 
 ```bash
+$ mapoc poster create -h 
+usage: Map Poster Creator poster create [-h] --shp_path SHP_PATH --geojson GEOJSON [--colors COLORS [COLORS ...]] [--output_prefix OUTPUT_PREFIX]
+
 Make Poster
 
 optional arguments:
