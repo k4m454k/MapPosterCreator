@@ -24,7 +24,7 @@
 #### Linux
 - `apt-get install libgeos-dev`
 
-#### Windows
+#### Windows [BIG TROUBLE, 14GB Dependencies]
 - MSVC v140
 - gdal
 
