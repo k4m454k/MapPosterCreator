@@ -78,4 +78,3 @@ def create_poster(
             color=base_color_scheme[color]
         )
         print("finish")
-
