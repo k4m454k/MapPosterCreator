@@ -43,4 +43,5 @@ optional arguments:
   --colors COLORS [COLORS ...]
                         Provide colors. eq "--colors white black coral"
   --output_prefix OUTPUT_PREFIX
+                        Output file prefix. eq. "{OUTPUT_PREFIX}_{COLOR}.png". Default "map"
 ```
