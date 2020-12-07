@@ -1,4 +1,4 @@
-# OSM Map Poster Creator
+# Map Poster Creator
 
 ![main window](pics/msk_c.png?raw=true)
 
