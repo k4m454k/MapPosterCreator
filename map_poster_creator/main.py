@@ -66,6 +66,9 @@ def create_poster(
     water_df = preprocessing_other(poly=poly, dataframe=water)
     greens_df = preprocessing_other(poly=poly, dataframe=greens)
     for color in colors:
+        if color not in base_color_scheme.keys():
+            logger.warning(f"Color {color} not found in base color scheme. "
+                           f"Available colors {' '.join(base_color_scheme.keys())}")
         print("")
         print(f"Plot and Save {color} map")
         plot_and_save(
@@ -77,4 +80,3 @@ def create_poster(
             dpi=1200,
             color=base_color_scheme[color]
         )
-        print("finish")
