@@ -19,7 +19,7 @@ def get_root_parser() -> argparse.ArgumentParser:
 
 
 def add_poster_create_subparser(parent_parser) -> argparse.ArgumentParser:
-    poster_create_parser = parent_parser.add_parser('create', description='Make prefix access key for user')
+    poster_create_parser = parent_parser.add_parser('create', description='Make Poster')
     poster_create_parser.add_argument('--shp_path', help='Path to shp folder.'
                                                     'Download in https://download.geofabrik.de/', required=True)
     poster_create_parser.add_argument(
