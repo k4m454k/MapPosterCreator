@@ -48,10 +48,26 @@ Make Poster
 
 optional arguments:
   -h, --help            show this help message and exit
-  --shp_path SHP_PATH   Path to shp folder.Download in https://download.geofabrik.de/
-  --geojson GEOJSON     Path to geojson file with boundary polygon.Create on https://geojson.io/ and export GeoJSON
+  --shp_path SHP_PATH   Path to shp folder.type "mapoc misc shp" to download
+  --geojson GEOJSON     Path to geojson file with boundary polygon.type "mapoc misc geojson" to create and download
   --colors COLORS [COLORS ...]
-                        Provide colors. eq "--colors white black coral"
+                        Provide colors. eq "--colors white black coral". Default: "white". Available colors: black, white, red, coral
   --output_prefix OUTPUT_PREFIX
-                        Output file prefix. eq. "{OUTPUT_PREFIX}_{COLOR}.png". Default "map"
+                        Output file prefix. eq. "{OUTPUT_PREFIX}_{COLOR}.png". Default: "map"
+```
+
+```bash
+$ mapoc misc -h          
+usage: Map Poster Creator misc [-h] {shp,geojson} ...
+
+Misc services
+
+optional arguments:
+  -h, --help     show this help message and exit
+
+misc management commands:
+  misc
+
+  {shp,geojson}  Additional help for available commands
+
 ```

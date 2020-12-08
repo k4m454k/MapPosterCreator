@@ -14,7 +14,7 @@ logging.basicConfig(
 
 
 def get_root_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog='Map Poster Creator')
+    parser = argparse.ArgumentParser(prog='mapoc', description="Map Poster Creator")
     parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + str(__version__))
 
     return parser
@@ -61,7 +61,7 @@ def add_poster_subparsers(parser_group) -> argparse.ArgumentParser:
     poster_commands_parser = parser_group.add_parser(
         'poster',
         description='Create Map Poster',
-        help='For create',
+        help='Poster creation',
     )
     poster_commands_parser_group = poster_commands_parser.add_subparsers(
         title='poster management commands',
