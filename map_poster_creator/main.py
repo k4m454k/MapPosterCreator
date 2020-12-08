@@ -14,19 +14,19 @@ logger = logging.getLogger(__name__)
 @log_processing
 def get_roads_data(shp_path: str) -> GeoDataFrame:
     roads = GeoDataFrame.from_file(f"{shp_path}/gis_osm_roads_free_1.shp", encoding='utf-8')
-    return roads
+    return roads  # TODO: Add Path or os.path
 
 
 @log_processing
 def get_water_data(shp_path: str) -> GeoDataFrame:
     water = GeoDataFrame.from_file(f"{shp_path}/gis_osm_water_a_free_1.shp", encoding='utf-8')
-    return water
+    return water  # TODO: Add Path or os.path
 
 
 @log_processing
 def get_greens_data(shp_path: str) -> GeoDataFrame:
     greens = GeoDataFrame.from_file(f"{shp_path}/gis_osm_pois_a_free_1.shp", encoding='utf-8')
-    return greens
+    return greens  # TODO: Add Path or os.path
 
 
 @log_processing
