@@ -26,8 +26,8 @@ def plot_and_save(
         color: dict,
         geometry: MapGeometry,
         path: str,
-        dpi=300,
-):
+        dpi: int = 300,
+) -> None:
 
     ax = set_subplot(color)
 
@@ -46,29 +46,29 @@ def plot_and_save(
 
 
 @log_processing
-def save_image(dpi, path):
+def save_image(dpi: int, path: str) -> None:
     plt.savefig(path, bbox_inches='tight', dpi=dpi)
 
 
 @log_processing
-def set_subplot(color):
+def set_subplot(color: dict) -> plt.subplot:
     plt.clf()
     f, ax = plt.subplots(1, figsize=(19, 19), facecolor=color['facecolor'])
     return ax
 
 
 @log_processing
-def plot_water(ax, color, water):
+def plot_water(ax: plt.subplot, color: dict, water: GeoDataFrame) -> None:
     water.plot(ax=ax, color=color['water'], linewidth=0.1)
 
 
 @log_processing
-def plot_greens(ax, color, greens):
+def plot_greens(ax: plt.subplot, color: dict, greens: GeoDataFrame) -> None:
     greens.plot(ax=ax, color=color['greens'], linewidth=0.1)
 
 
 @log_processing
-def plot_roads(ax, color, roads):
+def plot_roads(ax: plt.subplot, color: dict, roads: GeoDataFrame) -> None:
     roads.plot(
         ax=ax,
         color=color['roads'],
