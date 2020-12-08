@@ -1,18 +1,18 @@
 # Map Poster Creator
 
-![main window](pics/msk_c.png?raw=true)
+![main window](https://raw.githubusercontent.com/k4m454k/MapPosterCreator/master/pics/msk_c.png?raw=true)
 
 
 ## Valriable Colors
 
 ### `white`
-![white](pics/msk_white.png?raw=true)
+![white](https://raw.githubusercontent.com/k4m454k/MapPosterCreator/master/pics/msk_white.png?raw=true)
 
 ### `black`
-![black](pics/msk_black.png?raw=true)
+![black](https://raw.githubusercontent.com/k4m454k/MapPosterCreator/master/pics/msk_black.png?raw=true)
 
 ### `coral`
-![coral](pics/msk_coral.png?raw=true)
+![coral](https://raw.githubusercontent.com/k4m454k/MapPosterCreator/master/pics/msk_coral.png?raw=true)
 
 
 ## Install:
@@ -71,3 +71,9 @@ misc management commands:
   {shp,geojson}  Additional help for available commands
 
 ```
+
+## TODO
+
+- Add configurable settings for poster size and quality.
+- Add the ability to custom color schemes.
+- Add Docker image
