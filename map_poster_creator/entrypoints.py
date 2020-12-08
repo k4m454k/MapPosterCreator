@@ -1,7 +1,8 @@
 import argparse
 import logging
+import webbrowser
 
-from color_schemes import base_color_scheme
+from map_poster_creator.color_schemes import base_color_scheme
 from map_poster_creator.main import create_poster
 from map_poster_creator import __version__
 
@@ -21,11 +22,11 @@ def get_root_parser() -> argparse.ArgumentParser:
 
 def add_poster_create_subparser(parent_parser) -> argparse.ArgumentParser:
     poster_create_parser = parent_parser.add_parser('create', description='Make Poster')
-    poster_create_parser.add_argument('--shp_path', help='Path to shp folder.'
-                                                    'Download in https://download.geofabrik.de/', required=True)
+    poster_create_parser.add_argument('--shp_path', help='Path to shp folder. '
+                                                         'Type "mapoc misc shp" to download.', required=True)
     poster_create_parser.add_argument(
-        '--geojson', help='Path to geojson file with boundary polygon.'
-                          'Create on https://geojson.io/ and export GeoJSON',
+        '--geojson', help='Path to geojson file with boundary polygon. '
+                          'Type "mapoc misc geojson" to create and download.',
         required=True,
     )
     poster_create_parser.add_argument(
@@ -46,6 +47,16 @@ def add_poster_create_subparser(parent_parser) -> argparse.ArgumentParser:
     return poster_create_parser
 
 
+def add_misc_shp_subparser(parent_parser) -> argparse.ArgumentParser:
+    misc_parser = parent_parser.add_parser('shp', description='Shp download')
+    return misc_parser
+
+
+def add_misc_geojson_subparser(parent_parser) -> argparse.ArgumentParser:
+    misc_parser = parent_parser.add_parser('geojson', description='Create geoJSON')
+    return misc_parser
+
+
 def add_poster_subparsers(parser_group) -> argparse.ArgumentParser:
     poster_commands_parser = parser_group.add_parser(
         'poster',
@@ -62,6 +73,34 @@ def add_poster_subparsers(parser_group) -> argparse.ArgumentParser:
     add_poster_create_subparser(poster_commands_parser_group)
 
     return poster_commands_parser
+
+
+def add_misc_subparsers(parser_group) -> argparse.ArgumentParser:
+    misc_commands_parser = parser_group.add_parser(
+        'misc',
+        description='Misc services',
+        help='Misc services',
+    )
+    misc_commands_parser_group = misc_commands_parser.add_subparsers(
+        title='misc management commands',
+        description='misc',
+        help='Additional help for available commands',
+        dest='misc_commands',
+    )
+
+    add_misc_shp_subparser(misc_commands_parser_group)
+    add_misc_geojson_subparser(misc_commands_parser_group)
+
+    return misc_commands_parser
+
+
+def process_misc_service_call(args: argparse.Namespace) -> None:
+    command = args.misc_commands
+    if command == 'shp':
+        webbrowser.open_new_tab("https://download.geofabrik.de/")
+
+    if command == "geojson":
+        webbrowser.open_new_tab("https://geojson.io/")
 
 
 def process_poster_service_call(args: argparse.Namespace) -> None:
@@ -93,15 +132,19 @@ def map_poster(argv=None) -> None:
         dest='map_poster_services',
     )
     add_poster_subparsers(poster_creator_services_parser_group)
+    add_misc_subparsers(poster_creator_services_parser_group)
 
     args = parser.parse_args(argv)
 
     service = args.map_poster_services
     available_services = {
         'poster': process_poster_service_call,
+        'misc': process_misc_service_call,
     }
     if not service:
-        raise ValueError("Argument error. type 'mapoc --help'")
+        parser.print_help()
+        parser.print_usage()
+        return
     available_services[service](args)
 
 
