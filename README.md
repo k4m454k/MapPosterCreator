@@ -24,7 +24,8 @@
 #### Linux
 - `apt-get install libgeos-dev`
 
-#### Windows
+#### Windows 
+thanks [Lamroy95](https://github.com/Lamroy95) for Windows instruction 
 - Manually download and install two python packages (GDAL and Fiona):
   - Download [GDAL .whl file](https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal) for your version of python (Python 3.8 - ...cp38....whl)  
   - Download [Fiona .whl file](https://www.lfd.uci.edu/~gohlke/pythonlibs/#fiona)  
