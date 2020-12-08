@@ -24,8 +24,14 @@
 #### Linux
 - `apt-get install libgeos-dev`
 
-#### Windows [BIG TROUBLE, 14GB Dependencies]
-- Use Docker =)
+#### Windows
+- Manually download and install two python packages (GDAL and Fiona):
+  - Download [GDAL .whl file](https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal) for your version of python (Python 3.8 - ...cp38....whl)  
+  - Download [Fiona .whl file](https://www.lfd.uci.edu/~gohlke/pythonlibs/#fiona)  
+  - Install GDAL: `pip install path\to\gdal.whl`  
+  - Install Fiona: `pip install path\to\fiona.whl`  
+  - Finally, install map-poster-creator: `pip install map-poster-creator`  
+- Or just use Docker =)
 
 #### MacOS
 - `brew install geos`
