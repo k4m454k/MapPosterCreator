@@ -37,12 +37,12 @@ base_color_scheme = {
 }
 
 
-def is_hex_color(hex_color: str):
+def is_hex_color(hex_color: str) -> bool:
     match = re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', hex_color)
     return True if match else False
 
 
-def hex_to_faceacolor(hex_color: str):
+def hex_to_faceacolor(hex_color: str) -> Tuple[float]:
     if not is_hex_color(hex_color):
         raise ValueError(f"{hex_color} is a not hex color. Expected eq. '#ffffff'")
 
@@ -59,7 +59,7 @@ def get_color_schemes() -> Dict[str, Dict[str, Union[List[float], Tuple[float]]]
     return color_scheme
 
 
-def ensure_user_colors_or_create(config_path: Path):
+def ensure_user_colors_or_create(config_path: Path) -> None:
     if config_path.is_file():
         return
     if not config_path.parent.is_dir():
@@ -69,7 +69,10 @@ def ensure_user_colors_or_create(config_path: Path):
     save_user_color_schemes(config_path=config_path, color_schemes=base_color_scheme)
 
 
-def save_user_color_schemes(config_path: Path, color_schemes: Dict[str, Dict[str, Union[List[float], Tuple[float]]]]):
+def save_user_color_schemes(
+        config_path: Path,
+        color_schemes: Dict[str, Dict[str, Union[List[float], Tuple[float]]]],
+) -> None:
     with open(config_path, "w") as conf:
         json.dump(color_schemes, conf)
     logger.info(f"Save user colors config: {config_path}")
@@ -107,7 +110,7 @@ def add_user_color_scheme(
         water: str,
         greens: str,
         roads: str
-):
+) -> None:
     current_color_schemes = get_color_schemes()
     if name in current_color_schemes.keys():
         logger.warning(f"Color scheme {name} exists. Will be rewrite.")
