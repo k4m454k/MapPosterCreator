@@ -79,8 +79,40 @@ misc management commands:
 
 ```
 
+### Colors
+
+#### Add new color scheme
+
+Add a new color scheme or rewrite available color scheme.
+
+```bash
+usage: mapoc color add [-h] --name NAME --facecolor FACECOLOR --water WATER --greens GREENS --roads ROADS
+
+List available colors
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --name NAME           Name of color scheme. eq. "blue"
+  --facecolor FACECOLOR
+                        MatPlot face hex color. eq. "#ffffff"
+  --water WATER         MatPlot water hex color. eq. "#ffffff"
+  --greens GREENS       MatPlot greens hex color. eq. "#ffffff"
+  --roads ROADS         MatPlot roads hex color. eq. "#ffffff"
+
+```
+
+Example:
+```bash
+$ mapoc color add --name "coffee" --facecolor "#433633" --water "#5c5552" --greens "#8f857d" --roads "#decbb7" 
+```
+
+#### List available color schemes
+
+```bash
+$ mapoc color list
+```
+
 ## TODO
 
 - Add configurable settings for poster size and quality.
-- Add the ability to custom color schemes.
 - Add Docker image
