@@ -50,8 +50,8 @@ def get_polygon_from_geojson(geojson_path: str) -> Polygon:
 
 def get_map_geometry_from_poly(poly: Polygon) -> MapGeometry:
     x1, y1, x2, y2 = poly.bounds
-    top = min(y1, y2)
-    bottom = max(y1, y2)
+    top = max(y1, y2)
+    bottom = min(y1, y2)
     left = min(x1, x2)
     right = max(x1, x2)
     center = [(top + bottom) / 2, (left + right) / 2]
