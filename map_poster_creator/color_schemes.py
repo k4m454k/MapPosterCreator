@@ -80,6 +80,7 @@ def ensure_user_colors_or_create(config_path: Path) -> None:
 
 
 def update_user_colors_if_need(config_path: Path):
+    # TODO: Add logic for update config version
     pass
 
 
