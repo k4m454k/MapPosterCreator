@@ -10,6 +10,15 @@ from map_poster_creator.config import MAPOC_USER_PATH, USER_COLORS_SCHEME_FILE
 logger = logging.getLogger(__name__)
 
 base_color_scheme = {
+    "META_INFO": {
+        "config_version": 1,
+        "defaults": {
+            "facecolor": [0, 0, 0],
+            "water": "#383d52",
+            "greens": "#354038",
+            "roads": "#ffffff",
+        }
+    },
     "black": {
         "facecolor": [0, 0, 0],
         "water": "#383d52",
@@ -53,6 +62,7 @@ def hex_to_faceacolor(hex_color: str) -> Tuple[float]:
 def get_color_schemes() -> Dict[str, Dict[str, Union[List[float], Tuple[float]]]]:
     config_path = Path(os.path.expanduser("~")) / MAPOC_USER_PATH / USER_COLORS_SCHEME_FILE
     ensure_user_colors_or_create(config_path)
+    update_user_colors_if_need(config_path)
     with open(config_path, "r") as conf:
         color_scheme = json.load(conf)
 
@@ -67,6 +77,10 @@ def ensure_user_colors_or_create(config_path: Path) -> None:
 
     logger.info(f"User colors config not found!")
     save_user_color_schemes(config_path=config_path, color_schemes=base_color_scheme)
+
+
+def update_user_colors_if_need(config_path: Path):
+    pass
 
 
 def save_user_color_schemes(
