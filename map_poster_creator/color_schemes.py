@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 from typing import Union, Tuple, List, Dict
 
-from config import MAPOC_USER_PATH, USER_COLORS_SCHEME_FILE
+from map_poster_creator.config import MAPOC_USER_PATH, USER_COLORS_SCHEME_FILE
 
 logger = logging.getLogger(__name__)
 
