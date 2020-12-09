@@ -1,8 +1,9 @@
 import argparse
 import logging
 import webbrowser
+from pprint import pprint
 
-from map_poster_creator.color_schemes import base_color_scheme
+from map_poster_creator.color_schemes import base_color_scheme, get_color_schemes, add_user_color_scheme
 from map_poster_creator.main import create_poster
 from map_poster_creator import __version__
 
@@ -94,6 +95,61 @@ def add_misc_subparsers(parser_group) -> argparse.ArgumentParser:
     return misc_commands_parser
 
 
+def add_color_list_subparser(parent_parser) -> argparse.ArgumentParser:
+    color_parser = parent_parser.add_parser('list', description="List available colors")
+    return color_parser
+
+
+def add_color_add_subparser(parent_parser) -> argparse.ArgumentParser:
+    color_parser = parent_parser.add_parser('add', description="List available colors")
+    color_parser.add_argument('--name', help='Name of color scheme. eq. "blue"', required=True)
+    color_parser.add_argument('--facecolor', help='MatPlot face hex color. eq. "#ffffff"', required=True)
+    color_parser.add_argument('--water', help='MatPlot water hex color. eq. "#ffffff"', required=True)
+    color_parser.add_argument('--greens', help='MatPlot greens hex color. eq. "#ffffff"', required=True)
+    color_parser.add_argument('--roads', help='MatPlot roads hex color. eq. "#ffffff"', required=True)
+    return color_parser
+
+
+def add_color_subparsers(parser_group) -> argparse.ArgumentParser:
+    color_commands_parser = parser_group.add_parser(
+        'color',
+        description='Color services',
+        help='Color services',
+    )
+    color_commands_parser_group = color_commands_parser.add_subparsers(
+        title='color management commands',
+        description='Color management',
+        help='Additional help for available commands',
+        dest='color_commands',
+    )
+
+    add_color_add_subparser(color_commands_parser_group)
+    add_color_list_subparser(color_commands_parser_group)
+
+    return color_commands_parser
+
+
+def process_color_service_call(args: argparse.Namespace) -> None:
+    command = args.color_commands
+    if command == "list":
+        pprint(get_color_schemes())
+
+    if command == "add":
+        name = args.name
+        facecolor = args.facecolor
+        water = args.water
+        greens = args.greens
+        roads = args.roads
+
+        add_user_color_scheme(
+            name=name,
+            facecolor=facecolor,
+            water=water,
+            greens=greens,
+            roads=roads
+        )
+
+
 def process_misc_service_call(args: argparse.Namespace) -> None:
     command = args.misc_commands
     if command == 'shp':
@@ -133,6 +189,7 @@ def map_poster(argv=None) -> None:
     )
     add_poster_subparsers(poster_creator_services_parser_group)
     add_misc_subparsers(poster_creator_services_parser_group)
+    add_color_subparsers(poster_creator_services_parser_group)
 
     args = parser.parse_args(argv)
 
@@ -140,6 +197,7 @@ def map_poster(argv=None) -> None:
     available_services = {
         'poster': process_poster_service_call,
         'misc': process_misc_service_call,
+        'color': process_color_service_call,
     }
     if not service:
         parser.print_help()
