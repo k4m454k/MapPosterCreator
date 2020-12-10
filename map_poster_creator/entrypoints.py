@@ -166,6 +166,8 @@ def process_poster_service_call(args: argparse.Namespace) -> None:
     geojson = args.geojson
     colors = args.colors
     output_prefix = args.output_prefix
+    if colors == ["ALL"]:
+        colors = get_color_schemes().keys()
 
     if command == 'create':
         create_poster(

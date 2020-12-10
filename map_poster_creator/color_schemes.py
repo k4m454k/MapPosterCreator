@@ -59,13 +59,14 @@ def hex_to_faceacolor(hex_color: str) -> Tuple[float]:
     return tuple(1 / 255 * int(color[i:i+2], 16) for i in (0, 2, 4))  # magic asshole-code
 
 
-def get_color_schemes() -> Dict[str, Dict[str, Union[List[float], Tuple[float]]]]:
+def get_color_schemes(with_meta=False) -> Dict[str, Dict[str, Union[List[float], Tuple[float]]]]:
     config_path = Path(os.path.expanduser("~")) / MAPOC_USER_PATH / USER_COLORS_SCHEME_FILE
     ensure_user_colors_or_create(config_path)
     update_user_colors_if_need(config_path)
     with open(config_path, "r") as conf:
-        color_scheme = json.load(conf)
-
+        color_scheme: dict = json.load(conf)
+    if not with_meta:
+        _ = color_scheme.pop("META_INFO", None)
     return color_scheme
 
 
@@ -126,7 +127,7 @@ def add_user_color_scheme(
         greens: str,
         roads: str
 ) -> None:
-    current_color_schemes = get_color_schemes()
+    current_color_schemes = get_color_schemes(with_meta=False)
     if name in current_color_schemes.keys():
         logger.warning(f"Color scheme {name} exists. Will be rewrite.")
 
