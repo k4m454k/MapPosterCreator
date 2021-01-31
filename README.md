@@ -1,6 +1,6 @@
 # Map Poster Creator
 
-**Map Poster Creator** - script for creating beautiful road maps of any cities, zones, sections according to OCM data. 
+**Map Poster Creator** - script for creating beautiful road maps of any cities, zones, sections according to OSM data. 
 You can add green areas, roads, rivers, ponds, lakes to the map.
 There are several ready-made color schemes, but you can easily add your own colors.
 
