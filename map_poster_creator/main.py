@@ -1,6 +1,6 @@
 from typing import Tuple, List, Dict, Union
 
-import fiona  # noqa For apple silicon CPU
+import fiona  # noqa For Apple Silicon (M1) CPU
 from geopandas import GeoDataFrame
 from shapely.geometry import Polygon
 
