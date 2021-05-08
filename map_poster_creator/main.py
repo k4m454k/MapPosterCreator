@@ -1,5 +1,6 @@
 from typing import Tuple, List, Dict, Union
 
+import fiona
 from geopandas import GeoDataFrame
 from shapely.geometry import Polygon
 
